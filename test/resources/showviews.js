@@ -13,7 +13,7 @@ function viewsAndBindings() {
 
 	res = res.slice(2); // Remove view 0
 
-	res = res ? "Bound Views: " + res + "\n" : "";
+	res = res ? "Bound Views: " + res + "<br/>" : "";
 
 	for (key in topView.views) {
 		if (topView.views[key]) {
@@ -21,7 +21,7 @@ function viewsAndBindings() {
 		}
 	}
 
-	res = res + (topViews ? "Top Views: " + topViews : "");
+	res = res + (topViews ? "Top Views: " + topViews + "<br/>" : "");
 
 	for (var key in _jsv.bindings) {
 		if (_jsv.bindings[key]) {
@@ -31,6 +31,9 @@ function viewsAndBindings() {
 
 	res = res + (bindings ? "Bindings: " + bindings : "");
 
-	$("#views").html(res);
+	var viewsElement = document.getElementById("views");
+	if (viewsElement) {
+		viewsElement.innerHTML = "Views and Bindings:<br/>" + res ;
+	}
 	return res;
 }
